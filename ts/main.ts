@@ -9,10 +9,12 @@ const dataModel = {
 };
 
 const $form = document.querySelector('#journal-entry-form') as HTMLFormElement;
-const $urlPreview = document.querySelector(
-  '#photo-preview',
-) as HTMLImageElement;
+const $urlPreview = document.querySelector('#url-preview') as HTMLImageElement;
 const $photoUrlInput = document.querySelector('#photo-url') as HTMLInputElement;
+
+if (!$form) throw new Error('$form query failed!');
+if (!$urlPreview) throw new Error('$urlPreview query failed!');
+if (!$photoUrlInput) throw new Error('$photoUrlInput query failed!');
 
 $photoUrlInput.addEventListener('input', function (event: Event) {
   const target = event.target as HTMLInputElement;
