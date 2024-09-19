@@ -38,6 +38,4 @@ $form.addEventListener('submit', function (event: Event) {
 
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';
-
-  console.log('New entry added:', newEntry);
 });
