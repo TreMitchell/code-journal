@@ -32,6 +32,8 @@ $form.addEventListener('submit', function (event: Event) {
   dataModel.nextEntryId++;
   dataModel.entries.unshift(newEntry);
 
+  saveData(data);
+
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';
 
