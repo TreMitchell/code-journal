@@ -30,7 +30,7 @@ $form.addEventListener('submit', function (event: Event) {
   $urlPreview.src = 'images/placeholder-image-square.jpg';
 });
 
-function renderEntry(entry: JournalEntry): unknown {
+function renderEntry(entry: JournalEntry): HTMLElement {
   const $li = document.createElement('li');
   $li.classList.add('row');
 
@@ -58,3 +58,13 @@ function renderEntry(entry: JournalEntry): unknown {
 
   return $li;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const $ul = document.querySelector('ul');
+  if (!$ul) throw new Error('$ul query has failed!');
+
+  data.entries.forEach((entry) => {
+    const entryElement = renderEntry(entry);
+    $ul.appendChild(entryElement);
+  });
+});
