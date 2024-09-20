@@ -34,7 +34,7 @@ function renderEntry(entry: JournalEntry): HTMLElement {
   const $li = document.createElement('li');
   $li.classList.add('row');
 
-  const $imgWrapper = document.createElement('img');
+  const $imgWrapper = document.createElement('div');
   $imgWrapper.classList.add('column-half');
 
   const $img = document.createElement('img');
