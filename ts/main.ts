@@ -89,3 +89,26 @@ function toggleNoEntries(): void {
     $noEntries.style.display = 'none';
   }
 }
+
+function viewSwap(view: 'entries' | 'entry-form'): void {
+  const $entriesView = document.querySelector(
+    '[data-view="entries"]',
+  ) as HTMLElement;
+  const $entryFormView = document.querySelector(
+    '[data-view="entry-form"]',
+  ) as HTMLElement;
+
+  if (!$entriesView || !$entryFormView)
+    throw new Error('View elements not found!');
+
+  $entriesView.style.display = 'none';
+  $entryFormView.style.display = 'none';
+
+  if (view === 'entries') {
+    $entriesView.style.display = 'block';
+  } else if (view === 'entry-form') {
+    $entryFormView.style.display = 'block';
+  }
+
+  data.view = view;
+}
