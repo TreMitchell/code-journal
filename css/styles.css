@@ -108,3 +108,8 @@ button {
 .button-container {
   text-align: right;
 }
+
+ul > li.row > .column-half > content {
+  margin: 0 auto;
+  text-align: center;
+}
