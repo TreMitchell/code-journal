@@ -29,3 +29,32 @@ $form.addEventListener('submit', function (event: Event) {
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';
 });
+
+function renderEntry(entry: JournalEntry): unknown {
+  const $li = document.createElement('li');
+  $li.classList.add('row');
+
+  const $imgWrapper = document.createElement('img');
+  $imgWrapper.classList.add('column-half');
+
+  const $img = document.createElement('img');
+  $img.src = entry.photoUrl;
+  $img.alt = `${entry.title}`;
+  $img.classList.add('url-preview');
+
+  const $div = document.createElement('div');
+  $div.classList.add('column-half');
+
+  const $h2 = document.createElement('h2');
+  $h2.textContent = entry.title;
+
+  const $p = document.createElement('p');
+  $p.textContent = entry.content;
+
+  $li.appendChild($imgWrapper);
+  $li.appendChild($div);
+  $div.appendChild($h2);
+  $div.appendChild($p);
+
+  return $li;
+}
