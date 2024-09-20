@@ -20,6 +20,14 @@ $form.addEventListener('submit', function (event: Event) {
     photoUrl: $photoUrlInput.value,
     content: ($form.elements.namedItem('content') as HTMLTextAreaElement).value,
   };
+  const $newEntryElement = renderEntry(newEntry);
+  const $entryList = document.getElementById('entry-list');
+
+  if ($entryList && $newEntryElement) {
+    $entryList.appendChild($newEntryElement);
+  }
+
+  toggleNoEntries();
 
   data.nextEntryId++;
   data.entries.unshift(newEntry);
@@ -68,3 +76,16 @@ document.addEventListener('DOMContentLoaded', function () {
     $ul.appendChild(entryElement);
   });
 });
+
+function toggleNoEntries(): void {
+  const $noEntries = document.getElementById('p');
+  const $entryList = document.getElementById('entry-list') as HTMLUListElement;
+
+  if (!$noEntries || $entryList) throw new Error('No entries or entry list!');
+
+  if (data.entries.length === 0) {
+    $noEntries.style.display = 'block';
+  } else {
+    $noEntries.style.display = 'none';
+  }
+}

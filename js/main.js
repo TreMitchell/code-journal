@@ -17,6 +17,12 @@ $form.addEventListener('submit', function (event) {
     photoUrl: $photoUrlInput.value,
     content: $form.elements.namedItem('content').value,
   };
+  const $newEntryElement = renderEntry(newEntry);
+  const $entryList = document.getElementById('entry-list');
+  if ($entryList && $newEntryElement) {
+    $entryList.appendChild($newEntryElement);
+  }
+  toggleNoEntries();
   data.nextEntryId++;
   data.entries.unshift(newEntry);
   writeData();
@@ -26,7 +32,7 @@ $form.addEventListener('submit', function (event) {
 function renderEntry(entry) {
   const $li = document.createElement('li');
   $li.classList.add('row');
-  const $imgWrapper = document.createElement('img');
+  const $imgWrapper = document.createElement('div');
   $imgWrapper.classList.add('column-half');
   const $img = document.createElement('img');
   $img.src = entry.photoUrl;
@@ -52,3 +58,13 @@ document.addEventListener('DOMContentLoaded', function () {
     $ul.appendChild(entryElement);
   });
 });
+function toggleNoEntries() {
+  const $noEntries = document.getElementById('p');
+  const $entryList = document.getElementById('entry-list');
+  if (!$noEntries || $entryList) throw new Error('No entries or entry list!');
+  if (data.entries.length === 0) {
+    $noEntries.style.display = 'block';
+  } else {
+    $noEntries.style.display = 'none';
+  }
+}
