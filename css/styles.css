@@ -1,0 +1,110 @@
+/* .container {
+  margin: 0;
+  box-sizing: border-box;
+  margin-top: -15px;
+}
+
+body {
+  background-color: rgb(238, 238, 238);
+}
+
+header h1 {
+  background-color: rgb(84, 43, 128);
+  color: white;
+  margin: 0;
+}
+
+.new-entry {
+  padding: 0;
+}
+
+input,
+textarea,
+button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input {
+  position: relative;
+  top: -6rem;
+  margin-top: 6rem;
+}
+
+button {
+  background-color: rgb(84, 43, 128);
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  border-radius: 10px;
+  float: right;
+}
+
+@media only screen and (width <= 768px) {
+  .new-entry {
+    margin-top: 1.5rem;
+    margin-right: 10px;
+  }
+
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .input {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .new-entry {
+    margin-top: -10px;
+    margin-left: -38px;
+  }
+
+  .container {
+    padding: 40px;
+  }
+
+  .url-preview {
+    max-width: 400px;
+  }
+} */
+
+header {
+  background-color: rgb(84, 43, 128);
+  color: white;
+}
+
+img {
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+}
+
+input {
+  margin-bottom: 2rem;
+}
+
+button {
+  background-color: rgb(84, 43, 128);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+}
+
+.button-container {
+  text-align: right;
+}
