@@ -3,7 +3,7 @@ const dataModel = {
   entries: [],
   nextEntryId: 1,
 };
-const $form = document.querySelector('#journal-entry-form');
+const $form = document.querySelector('#entry-form');
 const $urlPreview = document.querySelector('#url-preview');
 const $photoUrlInput = document.querySelector('#photo-url');
 if (!$form) throw new Error('$form query failed!');
@@ -18,7 +18,7 @@ $form.addEventListener('submit', function (event) {
   const newEntry = {
     entryId: dataModel.nextEntryId,
     title: $form.elements.namedItem('title').value,
-    photoUrl: $form.elements.namedItem('photo-url').value,
+    photoUrl: $photoUrlInput.value,
     content: $form.elements.namedItem('content').value,
   };
   dataModel.nextEntryId++;
@@ -26,5 +26,4 @@ $form.addEventListener('submit', function (event) {
   saveData(data);
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';
-  console.log('New entry added:', newEntry);
 });

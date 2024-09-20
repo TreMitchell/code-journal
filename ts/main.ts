@@ -8,7 +8,7 @@ const dataModel = {
   nextEntryId: 1,
 };
 
-const $form = document.querySelector('#journal-entry-form') as HTMLFormElement;
+const $form = document.querySelector('#entry-form') as HTMLFormElement;
 const $urlPreview = document.querySelector('#url-preview') as HTMLImageElement;
 const $photoUrlInput = document.querySelector('#photo-url') as HTMLInputElement;
 
@@ -27,7 +27,7 @@ $form.addEventListener('submit', function (event: Event) {
   const newEntry = {
     entryId: dataModel.nextEntryId,
     title: ($form.elements.namedItem('title') as HTMLInputElement).value,
-    photoUrl: ($form.elements.namedItem('photo-url') as HTMLInputElement).value,
+    photoUrl: $photoUrlInput.value,
     content: ($form.elements.namedItem('content') as HTMLTextAreaElement).value,
   };
 

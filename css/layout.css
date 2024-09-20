@@ -11,6 +11,16 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* .column-full {
+  width: 100%;
+  margin-bottom: 1.5rem;
+} */
+
+.column-half {
+  width: 50%;
 }
 
 .column-full,
@@ -18,9 +28,20 @@
   width: 100%;
 }
 
+#url-preview {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
 @media screen and (width >= 768px) {
   .container {
     max-width: 900px;
+  }
+
+  .row {
+    align-items: center;
   }
 
   .column-full,
