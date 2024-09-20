@@ -1,8 +1,4 @@
 'use strict';
-const dataModel = {
-  entries: [],
-  nextEntryId: 1,
-};
 const $form = document.querySelector('#entry-form');
 const $urlPreview = document.querySelector('#url-preview');
 const $photoUrlInput = document.querySelector('#photo-url');
@@ -16,14 +12,14 @@ $photoUrlInput.addEventListener('input', function (event) {
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
   const newEntry = {
-    entryId: dataModel.nextEntryId,
+    entryId: data.nextEntryId,
     title: $form.elements.namedItem('title').value,
     photoUrl: $photoUrlInput.value,
     content: $form.elements.namedItem('content').value,
   };
-  dataModel.nextEntryId++;
-  dataModel.entries.unshift(newEntry);
-  saveData(data);
+  data.nextEntryId++;
+  data.entries.unshift(newEntry);
+  writeData();
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';
 });

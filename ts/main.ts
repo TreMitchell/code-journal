@@ -1,13 +1,3 @@
-const dataModel = {
-  entries: [] as Array<{
-    entryId: number;
-    title: string;
-    photoUrl: string;
-    content: string;
-  }>,
-  nextEntryId: 1,
-};
-
 const $form = document.querySelector('#entry-form') as HTMLFormElement;
 const $urlPreview = document.querySelector('#url-preview') as HTMLImageElement;
 const $photoUrlInput = document.querySelector('#photo-url') as HTMLInputElement;
@@ -25,16 +15,16 @@ $form.addEventListener('submit', function (event: Event) {
   event.preventDefault();
 
   const newEntry = {
-    entryId: dataModel.nextEntryId,
+    entryId: data.nextEntryId,
     title: ($form.elements.namedItem('title') as HTMLInputElement).value,
     photoUrl: $photoUrlInput.value,
     content: ($form.elements.namedItem('content') as HTMLTextAreaElement).value,
   };
 
-  dataModel.nextEntryId++;
-  dataModel.entries.unshift(newEntry);
+  data.nextEntryId++;
+  data.entries.unshift(newEntry);
 
-  saveData(data);
+  writeData();
 
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';

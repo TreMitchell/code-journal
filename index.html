@@ -17,15 +17,20 @@
   </head>
   <body>
     <header>
-      <h1 class="column-full">Code Journal</h1>
-    </header>
-    <main class="container">
-      <div class="column-full">
-        <h1 class="new-entry">New Entry</h1>
+      <div class="container">
+        <div class="row">
+          <h1 class="column-full">Code Journal</h1>
+        </div>
       </div>
-      <!--  -->
-      <div data-view="journal-entry-form">
-        <!--  -->
+    </header>
+    <main>
+      <div data-view="entry-form" class="container">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="new-entry">New Entry</h1>
+          </div>
+        </div>
+
         <form id="entry-form">
           <div class="row">
             <div class="column-half">
@@ -45,11 +50,15 @@
                 <input type="url" id="photo-url" required />
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="column-full">
               <label for="content">Notes</label>
-              <textarea id="content" required></textarea>
+              <textarea id="content" cols="30" rows="10" required></textarea>
             </div>
-            <div class="column-full">
+          </div>
+          <div class="row">
+            <div class="column-full button-container">
               <button type="submit">SAVE</button>
             </div>
           </div>
