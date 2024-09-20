@@ -9,17 +9,13 @@ body {
 }
 
 header h1 {
-  font-size: xxx-large;
   background-color: rgb(84, 43, 128);
   color: white;
   margin: 0;
 }
 
 .new-entry {
-  font-size: xxx-large;
   padding: 0;
-  margin-top: -20px;
-  margin-left: -38px;
 }
 
 input,
@@ -28,6 +24,13 @@ button {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input {
+  position: relative;
+  top: -6rem;
+  margin-top: 6rem;
 }
 
 button {
@@ -41,17 +44,27 @@ button {
 }
 
 @media only screen and (width <= 768px) {
+  .new-entry {
+    margin-top: 1.5rem;
+    margin-right: 10px;
+  }
+
   form {
     max-width: 600px;
     margin: 0 auto;
   }
 
-  header h1 {
-    color: black;
+  .input {
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (width >= 1024px) {
+  .new-entry {
+    margin-top: -10px;
+    margin-left: -38px;
+  }
+
   .container {
     padding: 40px;
   }
