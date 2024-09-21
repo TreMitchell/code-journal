@@ -88,3 +88,9 @@ $entriesLink.addEventListener('click', function (event) {
   event.preventDefault();
   viewSwap('entries');
 });
+const $newEntryButton = document.getElementById('new-entry-button');
+if (!$newEntryButton) throw new Error('$newEntryButton query failed!');
+$newEntryButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  viewSwap('entry-form');
+});

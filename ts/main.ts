@@ -123,3 +123,14 @@ $entriesLink.addEventListener('click', function (event: Event) {
   event.preventDefault();
   viewSwap('entries');
 });
+
+const $newEntryButton = document.getElementById(
+  'new-entry-button',
+) as HTMLAnchorElement;
+
+if (!$newEntryButton) throw new Error('$newEntryButton query failed!');
+
+$newEntryButton.addEventListener('click', function (event: Event) {
+  event.preventDefault();
+  viewSwap('entry-form');
+});
