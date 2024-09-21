@@ -78,10 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function toggleNoEntries(): void {
-  const $noEntries = document.getElementById('p');
-  const $entryList = document.getElementById('entry-list') as HTMLUListElement;
+  const $noEntries = document.querySelector(
+    '.no-entries',
+  ) as HTMLParagraphElement;
+  // const $entryList = document.getElementById('.entry-list');
 
-  if (!$noEntries || $entryList) throw new Error('No entries or entry list!');
+  if (!$noEntries) throw new Error('No entries!');
 
   if (data.entries.length === 0) {
     $noEntries.style.display = 'block';

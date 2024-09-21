@@ -59,9 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 function toggleNoEntries() {
-  const $noEntries = document.getElementById('p');
-  const $entryList = document.getElementById('entry-list');
-  if (!$noEntries || $entryList) throw new Error('No entries or entry list!');
+  const $noEntries = document.querySelector('.no-entries');
+  // const $entryList = document.getElementById('.entry-list');
+  if (!$noEntries) throw new Error('No entries!');
   if (data.entries.length === 0) {
     $noEntries.style.display = 'block';
   } else {
