@@ -48,15 +48,25 @@ function renderEntry(entry) {
   $li.appendChild($div);
   $div.appendChild($h2);
   $div.appendChild($p);
+  $imgWrapper.appendChild($img);
   return $li;
 }
 document.addEventListener('DOMContentLoaded', function () {
+  const validViews = ['entries', 'entry-form'];
+  let initialView;
+  if (validViews.includes(data.view)) {
+    initialView = data.view;
+  } else {
+    initialView = 'entries';
+  }
+  viewSwap(initialView);
   const $ul = document.querySelector('ul');
   if (!$ul) throw new Error('$ul query has failed!');
   data.entries.forEach((entry) => {
     const entryElement = renderEntry(entry);
     $ul.appendChild(entryElement);
   });
+  toggleNoEntries();
 });
 function toggleNoEntries() {
   const $noEntries = document.querySelector('.no-entries');

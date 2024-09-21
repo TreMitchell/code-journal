@@ -63,6 +63,7 @@ function renderEntry(entry: JournalEntry): HTMLElement {
   $li.appendChild($div);
   $div.appendChild($h2);
   $div.appendChild($p);
+  $imgWrapper.appendChild($img);
 
   return $li;
 }
