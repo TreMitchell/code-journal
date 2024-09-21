@@ -94,7 +94,6 @@ function toggleNoEntries(): void {
   const $noEntries = document.querySelector(
     '.no-entries',
   ) as HTMLParagraphElement;
-  // const $entryList = document.getElementById('.entry-list');
 
   if (!$noEntries) throw new Error('No entries!');
 
