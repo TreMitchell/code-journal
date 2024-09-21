@@ -68,3 +68,23 @@ function toggleNoEntries() {
     $noEntries.style.display = 'none';
   }
 }
+function viewSwap(view) {
+  const $entriesView = document.querySelector('[data-view="entries"]');
+  const $entryFormView = document.querySelector('[data-view="entry-form"]');
+  if (!$entriesView || !$entryFormView)
+    throw new Error('View elements not found!');
+  $entriesView.style.display = 'none';
+  $entryFormView.style.display = 'none';
+  if (view === 'entries') {
+    $entriesView.style.display = 'block';
+  } else if (view === 'entry-form') {
+    $entryFormView.style.display = 'block';
+  }
+  data.view = view;
+}
+const $entriesLink = document.getElementById('entries-link');
+if (!$entriesLink) throw new Error('$entriesLink query failed!');
+$entriesLink.addEventListener('click', function (event) {
+  event.preventDefault();
+  viewSwap('entries');
+});

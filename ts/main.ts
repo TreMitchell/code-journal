@@ -112,3 +112,14 @@ function viewSwap(view: 'entries' | 'entry-form'): void {
 
   data.view = view;
 }
+
+const $entriesLink = document.getElementById(
+  'entries-link',
+) as HTMLAnchorElement;
+
+if (!$entriesLink) throw new Error('$entriesLink query failed!');
+
+$entriesLink.addEventListener('click', function (event: Event) {
+  event.preventDefault();
+  viewSwap('entries');
+});
