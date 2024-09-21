@@ -101,13 +101,12 @@ function viewSwap(view: 'entries' | 'entry-form'): void {
   if (!$entriesView || !$entryFormView)
     throw new Error('View elements not found!');
 
-  $entriesView.style.display = 'none';
-  $entryFormView.style.display = 'none';
-
   if (view === 'entries') {
-    $entriesView.style.display = 'block';
+    $entriesView.classList.remove('hidden');
+    $entryFormView.classList.add('hidden');
   } else if (view === 'entry-form') {
-    $entryFormView.style.display = 'block';
+    $entryFormView.classList.remove('hidden');
+    $entriesView.classList.add('hidden');
   }
 
   data.view = view;
