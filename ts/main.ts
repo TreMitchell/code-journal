@@ -68,13 +68,25 @@ function renderEntry(entry: JournalEntry): HTMLElement {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const $ul = document.querySelector('ul');
+  const validViews = ['entries', 'entry-form'] as const;
+  let initialView: 'entries' | 'entry-form';
+
+  if (validViews.includes(data.view as any)) {
+    initialView = data.view as 'entries' | 'entry-form';
+  } else {
+    initialView = 'entries';
+  }
+
+  viewSwap(initialView);
+
+  const $ul = document.querySelector('ul') as HTMLUListElement;
   if (!$ul) throw new Error('$ul query has failed!');
 
   data.entries.forEach((entry) => {
     const entryElement = renderEntry(entry);
     $ul.appendChild(entryElement);
   });
+  toggleNoEntries();
 });
 
 function toggleNoEntries(): void {
