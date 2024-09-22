@@ -42,6 +42,7 @@ function renderEntry(entry) {
   const $div = document.createElement('div');
   $div.classList.add('column-half');
   const $h2 = document.createElement('h2');
+  $h2.classList.add('entry-title');
   $h2.textContent = entry.title;
   const $pencilIcon = document.createElement('i');
   $pencilIcon.classList.add('fas', 'fa-pencil-alt');
@@ -52,6 +53,7 @@ function renderEntry(entry) {
   $div.appendChild($h2);
   $div.appendChild($p);
   $imgWrapper.appendChild($img);
+  $h2.appendChild($pencilIcon);
   return $li;
 }
 document.addEventListener('DOMContentLoaded', function () {
@@ -70,6 +72,29 @@ document.addEventListener('DOMContentLoaded', function () {
     $ul.appendChild(entryElement);
   });
   toggleNoEntries();
+  $ul.addEventListener('click', function (event) {
+    const target = event.target;
+    if (target.classList.contains('fa-pencil-alt')) {
+      const $li = target.closest('li');
+      const entryId = $li.getAttribute('data-entry-id');
+      if (entryId) {
+        const entry = data.entries.find(
+          (e) => e.entryId === parseInt(entryId, 10),
+        );
+        if (entry) {
+          data.editing = entry;
+          $form.elements.namedItem('title').value = entry.title;
+          $photoUrlInput.value = entry.photoUrl;
+          $urlPreview.src =
+            entry.photoUrl || 'images/placeholder-image-square.jpg';
+          $form.elements.namedItem('content').value = entry.content;
+          const $formTitle = document.querySelector('#form-title');
+          $formTitle.textContent = 'Edit Entry';
+          viewSwap('entry-form');
+        }
+      }
+    }
+  });
 });
 function toggleNoEntries() {
   const $noEntries = document.querySelector('.no-entries');

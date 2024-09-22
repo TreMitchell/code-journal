@@ -96,6 +96,26 @@ input {
   margin-bottom: 2rem;
 }
 
+.entry-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.entry-title i {
+  font-size: 1rem;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.entry-title i:hover {
+  color: #007bff;
+}
+
 button {
   background-color: rgb(84, 43, 128);
   color: white;

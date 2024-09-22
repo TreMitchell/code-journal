@@ -56,6 +56,7 @@ function renderEntry(entry: JournalEntry): HTMLElement {
   $div.classList.add('column-half');
 
   const $h2 = document.createElement('h2');
+  $h2.classList.add('entry-title');
   $h2.textContent = entry.title;
 
   const $pencilIcon = document.createElement('i');
@@ -69,6 +70,7 @@ function renderEntry(entry: JournalEntry): HTMLElement {
   $div.appendChild($h2);
   $div.appendChild($p);
   $imgWrapper.appendChild($img);
+  $h2.appendChild($pencilIcon);
 
   return $li;
 }
@@ -93,6 +95,38 @@ document.addEventListener('DOMContentLoaded', function () {
     $ul.appendChild(entryElement);
   });
   toggleNoEntries();
+
+  $ul.addEventListener('click', function (event: Event) {
+    const target = event.target as HTMLElement;
+
+    if (target.classList.contains('fa-pencil-alt')) {
+      const $li = target.closest('li') as HTMLLIElement;
+      const entryId = $li.getAttribute('data-entry-id');
+      if (entryId) {
+        const entry = data.entries.find(
+          (e) => e.entryId === parseInt(entryId, 10),
+        );
+        if (entry) {
+          data.editing = entry;
+
+          ($form.elements.namedItem('title') as HTMLInputElement).value =
+            entry.title;
+          $photoUrlInput.value = entry.photoUrl;
+          $urlPreview.src =
+            entry.photoUrl || 'images/placeholder-image-square.jpg';
+          ($form.elements.namedItem('content') as HTMLTextAreaElement).value =
+            entry.content;
+
+          const $formTitle = document.querySelector(
+            '#form-title',
+          ) as HTMLElement;
+          $formTitle.textContent = 'Edit Entry';
+
+          viewSwap('entry-form');
+        }
+      }
+    }
+  });
 });
 
 function toggleNoEntries(): void {
