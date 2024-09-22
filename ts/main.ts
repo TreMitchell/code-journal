@@ -15,27 +15,47 @@ $form.addEventListener('submit', function (event: Event) {
   event.preventDefault();
 
   const newEntry = {
-    entryId: data.nextEntryId,
+    entryId: data.editing ? data.editing.entryId : data.nextEntryId,
     title: ($form.elements.namedItem('title') as HTMLInputElement).value,
     photoUrl: $photoUrlInput.value,
     content: ($form.elements.namedItem('content') as HTMLTextAreaElement).value,
   };
-  const $newEntryElement = renderEntry(newEntry);
-  const $entryList = document.getElementById('entry-list');
 
-  if ($entryList && $newEntryElement) {
-    $entryList.appendChild($newEntryElement);
+  if (data.editing === null) {
+    const $newEntryElement = renderEntry(newEntry);
+    const $entryList = document.getElementById('entry-list');
+
+    if ($entryList && $newEntryElement) {
+      $entryList.appendChild($newEntryElement);
+    }
+    data.nextEntryId++;
+    data.entries.unshift(newEntry);
+  } else {
+    const index = data.entries.findIndex(
+      (entry) => entry.entryId === newEntry.entryId,
+    );
+    if (index !== -1) {
+      data.entries[index] = newEntry;
+
+      const $originalLi = document.querySelector(
+        `li[data-entry-id="${newEntry.entryId}"]`,
+      );
+      const $newEntryElement = renderEntry(newEntry);
+
+      if ($originalLi && $newEntryElement) {
+        $originalLi.replaceWith($newEntryElement);
+      }
+    }
+    const $formTitle = document.querySelector('.new-entry') as HTMLElement;
+    $formTitle.textContent = 'New Entry';
   }
 
   toggleNoEntries();
-
-  data.nextEntryId++;
-  data.entries.unshift(newEntry);
-
   writeData();
 
   $form.reset();
   $urlPreview.src = 'images/placeholder-image-square.jpg';
+  data.editing = null;
 });
 
 function renderEntry(entry: JournalEntry): HTMLElement {
@@ -118,9 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
             entry.content;
 
           const $formTitle = document.querySelector(
-            '#form-title',
+            '.new-entry',
           ) as HTMLElement;
-          $formTitle.textContent = 'Edit Entry';
+          if ($formTitle) {
+            $formTitle.textContent = 'New Entry';
+          } else {
+            console.error('Form title element not found!');
+          }
 
           viewSwap('entry-form');
         }
