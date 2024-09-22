@@ -42,6 +42,8 @@ function renderEntry(entry: JournalEntry): HTMLElement {
   const $li = document.createElement('li');
   $li.classList.add('row');
 
+  $li.setAttribute('data-entry-id', entry.entryId.toString());
+
   const $imgWrapper = document.createElement('div');
   $imgWrapper.classList.add('column-half');
 
@@ -55,6 +57,9 @@ function renderEntry(entry: JournalEntry): HTMLElement {
 
   const $h2 = document.createElement('h2');
   $h2.textContent = entry.title;
+
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.classList.add('fas', 'fa-pencil-alt');
 
   const $p = document.createElement('p');
   $p.textContent = entry.content;
