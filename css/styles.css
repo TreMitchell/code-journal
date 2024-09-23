@@ -125,6 +125,13 @@ button {
   width: 70px;
 }
 
+#delete-button {
+  color: red;
+  text-decoration: underline;
+  background-color: white;
+  cursor: pointer;
+}
+
 .button-container {
   text-align: right;
 }
